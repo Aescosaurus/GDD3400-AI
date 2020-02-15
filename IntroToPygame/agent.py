@@ -31,10 +31,15 @@ class agent:
 		pygame.draw.line( gfx,( 0,0,255 ),self.center.get(),
 			( self.center + self.vel * self.spd * 10.0 ).get() )
 
-	# Go directly towards target.
+	# Go directly towards target in a straight line.
 	def seek( self,target ):
 		diff = target - self.pos
 		self.vel = diff.normalize()
+
+	# Go away from target in a straight line.
+	def flee( self,target ):
+		diff = target - self.pos
+		self.vel = -diff.normalize()
 	
 	def __str__( self ):
 		return( "pos: " + str( self.pos ) + " size: " + str( self.size ) +

@@ -21,6 +21,9 @@ class vec2:
 	def __truediv__( self,rhs ):
 		return( vec2( self.x / rhs,self.y / rhs ) )
 
+	def __neg__( self ):
+		return( vec2( -self.x,-self.y ) )
+
 	def dot( self,other ):
 		return( self.x * other.x + self.y * other.y )
 
