@@ -30,6 +30,9 @@
     <Compile Include="agent.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="enemy_hunter.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="player.py">
       <SubType>Code</SubType>
     </Compile>

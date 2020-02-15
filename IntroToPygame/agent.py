@@ -33,11 +33,23 @@ class agent:
 	def seek( self,target ):
 		diff = target - self.pos
 		self.vel = diff.normalize()
+		return( target )
 
 	# Go away from target in a straight line.
 	def flee( self,target ):
 		diff = target - self.pos
 		self.vel = -diff.normalize()
+		return( target )
+
+	# Anticipate where target will be and go there.
+	def pursue( self,target ):
+		diff = target.pos - self.pos
+		travel_time = diff.get_len() / target.spd
+		future_pos = target.pos + target.vel * target.spd * travel_time
+
+		self.seek( future_pos )
+
+		return( future_pos )
 	
 	def __str__( self ):
 		return( "pos: " + str( self.pos ) + " size: " + str( self.size ) +

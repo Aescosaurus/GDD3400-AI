@@ -20,9 +20,9 @@ class enemy( agent ):
 		if ( player.pos - self.pos ).get_len_sq() < math.pow( cm.enemy_attack_range,2 ):
 			self.target = player.center
 			if self.is_it:
-				super().seek( self.target )
+				self.chase()
 			else:
-				super().flee( self.target )
+				self.escape()
 		else:
 			self.vel = vec2.zero()
 
@@ -44,3 +44,9 @@ class enemy( agent ):
 		if self.vel != vec2.zero():
 			pygame.draw.line( gfx,( 255,0,0 ),self.center.get(),
 				self.target.get() )
+
+	def chase( self ):
+		super().seek( self.target )
+
+	def escape( self ):
+		super().flee( self.target )
