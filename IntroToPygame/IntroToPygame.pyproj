@@ -27,7 +27,7 @@
     <Compile Include="enemy.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="entity.py">
+    <Compile Include="agent.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="player.py">

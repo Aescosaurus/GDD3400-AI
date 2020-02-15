@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 class vec2:
 	def __init__( self,x,y ):
@@ -48,3 +49,9 @@ class vec2:
 
 	def one():
 		return( vec2( 1.0,1.0 ) )
+
+	def __eq__( self,rhs ):
+		return( self.x == rhs.x and self.y == rhs.y )
+	
+	def __ne__( self,rhs ):
+		return( not self == rhs )

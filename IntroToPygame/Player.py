@@ -1,8 +1,8 @@
 from vec2 import vec2
 import pygame
-from entity import entity
+from agent import agent
 
-class player( entity ):
+class player( agent ):
 	def __init__( self,pos,size,spd,col ):
 		super().__init__( pos,size,spd,col )
 
