@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>401f9832-34fe-4241-87ac-be72eea5efc8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>IntroToPygame.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,11 +21,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Player.py">
+    <Compile Include="constants.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IntroToPygame.py" />
-    <Compile Include="Vector.py">
+    <Compile Include="player.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="main.py" />
+    <Compile Include="vec2.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

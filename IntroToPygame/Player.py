@@ -1,7 +1,7 @@
-from Vector import Vector
+from vec2 import vec2
 import pygame
 
-class Player:
+class player:
 	def __init__( self,pos,vel,size ):
 		self.pos = pos
 		self.vel = vel
@@ -13,11 +13,11 @@ class Player:
 			self.size.x,self.size.y ) )
 
 	def update( self ):
-		move = Vector( 0,0 )
-		if pygame.key.get_pressed()[pygame.K_UP]: move.y -= 1
-		if pygame.key.get_pressed()[pygame.K_DOWN]: move.y += 1
-		if pygame.key.get_pressed()[pygame.K_LEFT]: move.x -= 1
-		if pygame.key.get_pressed()[pygame.K_RIGHT]: move.x += 1
+		move = vec2.zero()
+		if pygame.key.get_pressed()[pygame.K_w]: move.y -= 1
+		if pygame.key.get_pressed()[pygame.K_s]: move.y += 1
+		if pygame.key.get_pressed()[pygame.K_a]: move.x -= 1
+		if pygame.key.get_pressed()[pygame.K_d]: move.x += 1
 
 		self.vel = move.normalize()
 		self.pos += self.vel
