@@ -6,12 +6,12 @@ class vec2:
 		self.y = y
 
 	def __str__( self ):
-		return( str( x ) + ", " + str( y ) )
+		return( str( self.x ) + ", " + str( self.y ) )
 
 	def __add__( self,rhs ):
 		return( vec2( self.x + rhs.x,self.y + rhs.y ) )
 	
-	def __subtract__( self,rhs ):
+	def __sub__( self,rhs ):
 		return( vec2( self.x - rhs.x,self.y - rhs.y ) )
 
 	def __mul__( self,rhs ):
@@ -30,10 +30,10 @@ class vec2:
 		return( self.x * self.x + self.y * self.y )
 
 	def get_len( self ):
-		return( math.sqrt( get_len_sq() ) )
+		return( math.sqrt( self.get_len_sq() ) )
 	
 	def normalize( self ):
-		len = self.get_len_sq()
+		len = self.get_len()
 		if len == 0.0:
 			return( self )
 		else:
