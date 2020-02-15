@@ -2,15 +2,13 @@ from vec2 import vec2
 import pygame
 
 class player:
-	def __init__( self,pos,vel,size ):
+	def __init__( self,pos,size,spd,col ):
 		self.pos = pos
-		self.vel = vel
 		self.size = size
-
-	def draw( self,gfx ):
-		pygame.draw.rect( gfx,( 255,20,20 ),
-			pygame.Rect( self.pos.x,self.pos.y,
-			self.size.x,self.size.y ) )
+		self.speed = spd
+		self.vel = vec2.zero()
+		self.center = pos + vec2.one() * ( size / 2 )
+		self.color = col
 
 	def update( self ):
 		move = vec2.zero()
@@ -20,4 +18,17 @@ class player:
 		if pygame.key.get_pressed()[pygame.K_d]: move.x += 1
 
 		self.vel = move.normalize()
-		self.pos += self.vel
+		self.pos += self.vel * self.speed
+		self.center = self.pos + vec2.one() * ( self.size / 2 )
+
+	def draw( self,gfx ):
+		pygame.draw.rect( gfx,self.color,
+			pygame.Rect( self.pos.x,self.pos.y,
+			self.size,self.size ) )
+
+		pygame.draw.line( gfx,( 0,0,255 ),self.center.get(),
+			( self.center + self.vel * 50.0 ).get() )
+
+	def __str__( self ):
+		return( "pos: " + self.pos + " vel: " + self.vel +
+			" center: " + self.center )

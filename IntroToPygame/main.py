@@ -1,24 +1,24 @@
 import pygame
-import constants
+import cm
 from vec2 import vec2
 from player import player
 
 pygame.init()
 
-screen = pygame.display.set_mode( ( constants.screen_width,constants.screen_height ) )
+screen = pygame.display.set_mode( ( cm.screen_width,cm.screen_height ) )
 done = False
 
-player = player( vec2( 50,50 ),vec2( 0,0 ),vec2( 30,30 ) )
+player = player( cm.screen_size / 2,cm.player_size,cm.player_speed,cm.player_col )
 
 clock = pygame.time.Clock()
 while not done:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			done = True
-	screen.fill( constants.bg_color )
+	screen.fill( cm.bg_color )
 	# Logic here
 	player.update()
 	player.draw( screen )
 	# 
 	pygame.display.flip()
-	clock.tick( constants.frame_rate )
+	clock.tick( cm.frame_rate )
