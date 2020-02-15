@@ -15,3 +15,5 @@ enemy_size = 10.0
 enemy_spd = 5.0
 enemy_col = ( 0,255,0 )
 enemy_attack_range = 200.0
+
+enemy_hunter_col = ( 255,0,255 )

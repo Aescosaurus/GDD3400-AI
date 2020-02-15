@@ -4,6 +4,7 @@ from vec2 import vec2
 from player import player
 from enemy import enemy
 from enemy_hunter import enemy_hunter
+import random
 
 pygame.init()
 
@@ -11,8 +12,15 @@ gfx = pygame.display.set_mode( ( cm.screen_width,cm.screen_height ) )
 done = False
 
 player = player( cm.screen_size / 2,cm.player_size,cm.player_spd,cm.player_col )
-# enemy = enemy( vec2( 100,100 ),cm.enemy_size,cm.enemy_spd,cm.enemy_col )
-enemy = enemy_hunter( vec2( 100,100 ),cm.enemy_size,cm.enemy_spd,cm.enemy_col,player )
+enemies = []
+for i in range( 5 ):
+	rand_pos = vec2( random.uniform( 0,cm.screen_width ),
+		random.uniform( 0,cm.screen_height ) )
+	enemies.append( enemy( rand_pos,cm.enemy_size,cm.enemy_spd,cm.enemy_col ) )
+for i in range( 5 ):
+	rand_pos = vec2( random.uniform( 0,cm.screen_width ),
+		random.uniform( 0,cm.screen_height ) )
+	enemies.append( enemy( rand_pos,cm.enemy_size,cm.enemy_spd,cm.enemy_hunter_col ) )
 
 clock = pygame.time.Clock()
 while not done:
@@ -24,8 +32,11 @@ while not done:
 	player.update()
 	player.draw( gfx )
 	
-	enemy.update( player )
-	enemy.draw( gfx )
+	# enemy.update( player )
+	# enemy.draw( gfx )
+	for e in enemies:
+		e.update( player )
+		e.draw( gfx )
 	# 
 	pygame.display.flip()
 	clock.tick( cm.frame_rate )
