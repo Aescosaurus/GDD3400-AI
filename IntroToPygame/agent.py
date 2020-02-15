@@ -41,16 +41,23 @@ class agent:
 		self.vel = -diff.normalize()
 		return( target )
 
-	# Anticipate where target will be and go there.
-	def pursue( self,target ):
+	def anticipate( self,target,func ):
 		diff = target.pos - self.pos
 		travel_time = diff.get_len() / target.spd
 		future_pos = target.pos + target.vel * target.spd * travel_time
 
-		self.seek( future_pos )
+		func( future_pos )
 
 		return( future_pos )
 	
+	# Anticipate where target will be and go there.
+	def pursue( self,target ):
+		return( self.anticipate( target,self.seek ) )
+
+	# Intelligently flee player.
+	def evade( self,target ):
+		return( self.anticipate( target,self.flee ) )
+
 	def __str__( self ):
 		return( "pos: " + str( self.pos ) + " size: " + str( self.size ) +
 			" vel: " + str( self.vel ) + " center: " + str( self.center ) )

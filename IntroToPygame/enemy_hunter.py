@@ -18,4 +18,5 @@ class enemy_hunter( enemy ):
 	def chase( self ):
 		self.prediction = super().pursue( self.player_target )
 
-	# def escape
+	def escape( self ):
+		self.prediction = super().evade( self.player_target )
