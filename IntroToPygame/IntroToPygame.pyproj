@@ -34,6 +34,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="main.py" />
+    <Compile Include="timer.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="vec2.py">
       <SubType>Code</SubType>
     </Compile>

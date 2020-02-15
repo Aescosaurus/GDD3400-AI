@@ -3,12 +3,16 @@ from vec2 import vec2
 import cm
 import math
 import pygame
+from timer import timer
 
 class enemy( agent ):
 	def __init__( self,pos,size,spd,col ):
 		super().__init__( pos,size,spd,col )
 		self.target = vec2( -1,-1 )
 		self.is_it = True
+		self.tagback_timer = timer( 2.0,True )
+		self.flash_col = ( 255,255,255 )
+		self.flashing = False
 
 	def update( self,player ):
 		super().update()
@@ -18,16 +22,24 @@ class enemy( agent ):
 			if self.is_it:
 				super().seek( self.target )
 			else:
-				pass
-				# todo flee
+				super().flee( self.target )
 		else:
 			self.vel = vec2.zero()
 
-		if self.is_overlapping_with( player ):
+		self.tagback_timer.update()
+		if self.is_overlapping_with( player ) and self.tagback_timer.is_done():
 			self.is_it = not self.is_it
+			self.tagback_timer.reset()
 
 	def draw( self,gfx ):
-		super().draw( gfx )
+		if not self.tagback_timer.is_done() and \
+			round( self.tagback_timer.get_percent() * 100 ) % 10 == 0:
+			self.flashing = not self.flashing
+		# super().draw( gfx,self.flashing if self.flash_col else self.col )
+		if self.flashing:
+			super().draw( gfx,self.flash_col )
+		else:
+			super().draw( gfx )
 
 		if self.vel != vec2.zero():
 			pygame.draw.line( gfx,( 255,0,0 ),self.center.get(),

@@ -22,11 +22,9 @@ class agent:
 		self.hitbox.move_ip( self.pos.x - self.hitbox.x,
 			self.pos.y - self.hitbox.y )
 	
-	def draw( self,gfx ):
-		# pygame.draw.rect( gfx,self.col,
-		# 	pygame.Rect( self.pos.x,self.pos.y,
-		# 	self.size.x,self.size.y ) )
-		pygame.draw.rect( gfx,self.col,self.hitbox )
+	def draw( self,gfx,draw_col = -1 ):
+		if draw_col == -1: draw_col = self.col
+		pygame.draw.rect( gfx,draw_col,self.hitbox )
 
 		pygame.draw.line( gfx,( 0,0,255 ),self.center.get(),
 			( self.center + self.vel * self.spd * 10.0 ).get() )
