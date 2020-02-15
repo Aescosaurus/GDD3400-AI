@@ -24,6 +24,9 @@
     <Compile Include="cm.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="entity.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="player.py">
       <SubType>Code</SubType>
     </Compile>
