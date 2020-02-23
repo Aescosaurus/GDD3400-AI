@@ -3,8 +3,9 @@ import pygame
 from agent import agent
 
 class player( agent ):
-	def __init__( self,pos,size,spd,col,img = "" ):
-		super().__init__( pos,size,spd,col,img )
+	def __init__( self,pos,spd,img ):
+		super().__init__( pos,spd,img )
+		self.spd = self.accel
 
 	def update( self ):
 		super().update()
@@ -16,4 +17,8 @@ class player( agent ):
 		if pygame.key.get_pressed()[pygame.K_a]: move.x -= 1
 		if pygame.key.get_pressed()[pygame.K_d]: move.x += 1
 
-		self.vel = move.normalize()
+		if move != vec2.zero():
+			self.vel = move.normalize()
+			self.spd = self.accel
+		else:
+			self.spd = 0.0

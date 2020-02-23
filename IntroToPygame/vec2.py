@@ -43,9 +43,13 @@ class vec2:
 		else:
 			return( self.scale( 1.0 / len ) )
 
-	# Returns copy of this as a tuple.
+	# Returns copy of this as a tuple (pygame loves these).
 	def get( self ):
 		return( ( self.x,self.y ) )
+
+	# Make a vec2 out of a tuple or array.
+	def create( weird_vec2 ):
+		return( vec2( weird_vec2[0],weird_vec2[1] ) )
 
 	def zero():
 		return( vec2( 0.0,0.0 ) )

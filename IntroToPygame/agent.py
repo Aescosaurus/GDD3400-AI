@@ -5,14 +5,15 @@ import cm
 from codex import codex
 
 class agent:
-	def __init__( self,pos,size,spd,col,img_src = "" ):
+	def __init__( self,pos,accel,img ):
 		self.pos = pos
-		self.size = vec2( size,size )
-		self.spd = spd
-		self.col = col
+		self.accel = accel
+		self.spd = 0.0
 		self.spr = None
-		if len( img_src ) > 0:
-			self.spr = codex.fetch( img_src )
+		self.spr = codex.fetch( img )
+		self.size = vec2.create( self.spr.get_size() )
+		self.rot = 0.0
+
 		self.center = self.pos + self.size / 2
 		self.vel = vec2.zero()
 		self.hitbox = pygame.Rect( self.pos.x,self.pos.y,self.size.x,self.size.y )
@@ -27,12 +28,11 @@ class agent:
 		self.hitbox.move_ip( self.pos.x - self.hitbox.x,
 			self.pos.y - self.hitbox.y )
 	
-	def draw( self,gfx,draw_col = -1 ):
-		if self.spr != None:
-			gfx.blit( self.spr,self.pos.get() )
-		else:
-			if draw_col == -1: draw_col = self.col
-			pygame.draw.rect( gfx,draw_col,self.hitbox )
+	def draw( self,gfx ):
+		rotated_image = pygame.transform.rotate( self.spr,self.rot )
+		gfx.blit( rotated_image,self.pos.get() )
+		# if draw_col == -1: draw_col = self.col
+		# pygame.draw.rect( gfx,( 255,0,255 ),self.hitbox )
 
 		pygame.draw.line( gfx,( 0,0,255 ),self.center.get(),
 			( self.center + self.vel * self.spd * 10.0 ).get() )
