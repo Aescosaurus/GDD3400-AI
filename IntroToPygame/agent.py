@@ -2,13 +2,17 @@ import pygame
 from vec2 import vec2
 import numpy as np
 import cm
+from codex import codex
 
 class agent:
-	def __init__( self,pos,size,spd,col ):
+	def __init__( self,pos,size,spd,col,img_src = "" ):
 		self.pos = pos
 		self.size = vec2( size,size )
 		self.spd = spd
 		self.col = col
+		self.spr = None
+		if len( img_src ) > 0:
+			self.spr = codex.fetch( img_src )
 		self.center = self.pos + self.size / 2
 		self.vel = vec2.zero()
 		self.hitbox = pygame.Rect( self.pos.x,self.pos.y,self.size.x,self.size.y )
@@ -24,8 +28,11 @@ class agent:
 			self.pos.y - self.hitbox.y )
 	
 	def draw( self,gfx,draw_col = -1 ):
-		if draw_col == -1: draw_col = self.col
-		pygame.draw.rect( gfx,draw_col,self.hitbox )
+		if self.spr != None:
+			gfx.blit( self.spr,self.pos.get() )
+		else:
+			if draw_col == -1: draw_col = self.col
+			pygame.draw.rect( gfx,draw_col,self.hitbox )
 
 		pygame.draw.line( gfx,( 0,0,255 ),self.center.get(),
 			( self.center + self.vel * self.spd * 10.0 ).get() )

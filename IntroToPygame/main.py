@@ -10,12 +10,12 @@ pygame.init()
 gfx = pygame.display.set_mode( ( cm.screen_width,cm.screen_height ) )
 done = False
 
-player = dog( cm.screen_size / 2,cm.player_size,cm.player_spd,cm.player_col )
+player = dog( cm.screen_size / 2,cm.player_size,cm.player_spd,cm.player_col,cm.wolf_spr )
 sheepies = []
 for i in range( 10 ):
 	rand_pos = vec2( random.uniform( 0,cm.screen_width ),
 		random.uniform( 0,cm.screen_height ) )
-	sheepies.append( sheep( rand_pos,cm.enemy_size,cm.enemy_spd,cm.enemy_col ) )
+	sheepies.append( sheep( rand_pos,cm.enemy_size,cm.enemy_spd,0,cm.sheep_spr ) )
 
 clock = pygame.time.Clock()
 while not done:

@@ -24,6 +24,9 @@
     <Compile Include="cm.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="codex.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="dog.py">
       <SubType>Code</SubType>
     </Compile>

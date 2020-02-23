@@ -1,4 +1,5 @@
 from vec2 import vec2
+import pygame
 
 # CM = Constants Manager
 frame_rate = 60.0
@@ -17,3 +18,6 @@ enemy_col = ( 0,255,0 )
 enemy_attack_range = 200.0
 
 enemy_hunter_col = ( 255,0,255 )
+
+wolf_spr = "images/collie.png"
+sheep_spr = "images/sheep.png"

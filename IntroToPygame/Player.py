@@ -3,8 +3,8 @@ import pygame
 from agent import agent
 
 class player( agent ):
-	def __init__( self,pos,size,spd,col ):
-		super().__init__( pos,size,spd,col )
+	def __init__( self,pos,size,spd,col,img = "" ):
+		super().__init__( pos,size,spd,col,img )
 
 	def update( self ):
 		super().update()
