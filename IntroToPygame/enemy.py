@@ -8,7 +8,6 @@ from timer import timer
 class enemy( agent ):
 	def __init__( self,pos,size,spd,col ):
 		super().__init__( pos,size,spd,col )
-		self.target = vec2( -1,-1 )
 		self.is_it = True
 		self.tagback_timer = timer( 2.0,True )
 		self.flash_col = ( 255,255,255 )

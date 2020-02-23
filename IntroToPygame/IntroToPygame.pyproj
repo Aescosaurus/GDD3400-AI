@@ -24,6 +24,9 @@
     <Compile Include="cm.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="dog.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="enemy.py">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="main.py" />
+    <Compile Include="sheep.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="timer.py">
       <SubType>Code</SubType>
     </Compile>

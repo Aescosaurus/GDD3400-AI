@@ -12,6 +12,7 @@ class agent:
 		self.center = self.pos + self.size / 2
 		self.vel = vec2.zero()
 		self.hitbox = pygame.Rect( self.pos.x,self.pos.y,self.size.x,self.size.y )
+		self.target = vec2( -1.0,-1.0 )
 
 	def update( self ):
 		self.pos += self.vel * self.spd
