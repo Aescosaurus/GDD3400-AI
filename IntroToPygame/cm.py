@@ -19,5 +19,13 @@ enemy_attack_range = 200.0
 
 enemy_hunter_col = ( 255,0,255 )
 
+align_force = 1.0
+cohesion_force = 1.0
+separation_force = 1.2
+bounds_force = 1.7
+dog_force = 1.0
+sheep_neighborhood_dist = 200.0
+sheep_bound_dist = 50.0
+
 wolf_spr = "images/collie.png"
 sheep_spr = "images/sheep.png"

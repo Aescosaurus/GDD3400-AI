@@ -29,6 +29,7 @@ while not done:
 	
 	for s in sheepies:
 		s.update( player )
+		s.update_ai( player,sheepies )
 		s.draw( gfx )
 	# 
 	pygame.display.flip()

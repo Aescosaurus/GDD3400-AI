@@ -21,8 +21,10 @@ class agent:
 
 	def update( self ):
 		self.pos += self.vel * self.spd
-		self.pos.x = np.clip( self.pos.x,0,cm.screen_width - self.size.x )
-		self.pos.y = np.clip( self.pos.y,0,cm.screen_height - self.size.y )
+		self.pos.x = np.clip( self.pos.x,0,
+			cm.screen_width - self.hitbox.width )
+		self.pos.y = np.clip( self.pos.y,0,
+			cm.screen_height - self.hitbox.height )
 
 		self.center = self.pos + self.size / 2
 		self.hitbox.move_ip( self.pos.x - self.hitbox.x,
@@ -30,7 +32,11 @@ class agent:
 	
 	def draw( self,gfx ):
 		rotated_image = pygame.transform.rotate( self.spr,self.rot )
+		bounding_rect = rotated_image.get_bounding_rect().move( self.pos.get() )
 		gfx.blit( rotated_image,self.pos.get() )
+		pygame.draw.rect( gfx,( 255,127,0 ),bounding_rect,2 );
+		self.hitbox = bounding_rect
+		self.center = vec2.create( self.hitbox.center )
 		# if draw_col == -1: draw_col = self.col
 		# pygame.draw.rect( gfx,( 255,0,255 ),self.hitbox )
 
@@ -72,3 +78,6 @@ class agent:
 
 	def is_overlapping_with( self,other ):
 		return( self.hitbox.colliderect( other.hitbox ) )
+	
+	def is_contained_by( self,rect ):
+		return( rect.contains( self.hitbox ) )
