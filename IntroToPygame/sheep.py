@@ -11,7 +11,8 @@ class sheep( agent ):
 		self.vel.x = random.uniform( -0.5,0.5 )
 		self.vel.y = random.uniform( -0.5,0.5 )
 		self.vel = self.vel.normalize()
-		self.spd = self.accel / 2
+		self.spd = self.accel
+		self.frens = None
 
 	def update( self,player ):
 		super().update()
@@ -25,7 +26,10 @@ class sheep( agent ):
 		# 	self.spd = 0.0
 
 	def update_ai( self,player,sheeps ):
-		frens = self.find_neighbors( sheeps )
+		if random.uniform( 0.0,1.0 ) > cm.sheep_fren_update_chance or self.frens == None:
+			self.frens = self.find_neighbors( sheeps )
+
+		frens = self.frens
 
 		# Alignment
 		align_vel = vec2.zero()
@@ -68,6 +72,7 @@ class sheep( agent ):
 			self.vel += dog_vel.normalize() * cm.dog_force
 
 		self.vel = self.vel.normalize()
+		self.rot = math.degrees( math.atan2( self.vel.y,-self.vel.x ) ) + 90.0
 
 	def draw( self,gfx ):
 		super().draw( gfx )

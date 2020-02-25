@@ -34,7 +34,7 @@ class agent:
 		rotated_image = pygame.transform.rotate( self.spr,self.rot )
 		bounding_rect = rotated_image.get_bounding_rect().move( self.pos.get() )
 		gfx.blit( rotated_image,self.pos.get() )
-		pygame.draw.rect( gfx,( 255,127,0 ),bounding_rect,2 );
+		pygame.draw.rect( gfx,( 255,127,0 ),bounding_rect,1 );
 		self.hitbox = bounding_rect
 		self.center = vec2.create( self.hitbox.center )
 		# if draw_col == -1: draw_col = self.col
