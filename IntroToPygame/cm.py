@@ -28,22 +28,21 @@ sheep_neighborhood_dist = 70.0
 sheep_bound_dist = 60.0
 sheep_count = 100
 sheep_fps = 12 # Higher = more sheep responsiveness, less game fps.
-sheep_fren_update_chance = 0.9 # Higher = update frens more but lag game more.
+sheep_fren_update_chance = 0.3 # Higher = update frens more but lag game more.
 sheep_bucket_size = int( sheep_fps / frame_rate * sheep_count )
 
 # Add the following controls to adjust various elements in your game to help you debug
 # (and to allow the grader to quickly and easily see that your components work):
-# 
-# Toggle Sheep Velocity line
-# Toggle Dog Force line
-# Toggle Boundary Force lines
-# Toggle Neighbor lines
-# Toggle Bounding Boxes
-# Toggle Dog Forces
-# Toggle Alignment Forces
-# Toggle Separation Forces
-# Toggle Cohesion Forces
-# Toggle Boundary Forces
+sheep_vel_line     = True # Toggle Sheep Velocity line.
+dog_force_line     = True # Toggle Dog Force line.
+bound_force_line   = True # Toggle Boundary Force lines.
+show_frens         = True # Toggle Neighbor lines.
+bound_box          = True # Toggle Bounding Boxes.
+enable_dog_force   = True # Toggle Dog Forces.
+enable_align_force = True # Toggle Alignment Forces.
+enable_sep_force   = True # Toggle Separation Forces
+enable_fren_force  = True # Toggle Cohesion Forces.
+enable_bound_force = True # Toggle Boundary Forces.
 
 wolf_spr = "images/collie.png"
 sheep_spr = "images/sheep.png"

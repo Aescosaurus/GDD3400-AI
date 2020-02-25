@@ -30,18 +30,20 @@ class agent:
 		self.hitbox.move_ip( self.pos.x - self.hitbox.x,
 			self.pos.y - self.hitbox.y )
 	
-	def draw( self,gfx ):
+	def draw( self,gfx,draw_line = True ):
 		rotated_image = pygame.transform.rotate( self.spr,self.rot )
 		bounding_rect = rotated_image.get_bounding_rect().move( self.pos.get() )
 		gfx.blit( rotated_image,self.pos.get() )
-		pygame.draw.rect( gfx,( 255,127,0 ),bounding_rect,1 );
+		if cm.bound_box:
+			pygame.draw.rect( gfx,( 255,127,0 ),bounding_rect,1 );
 		self.hitbox = bounding_rect
 		self.center = vec2.create( self.hitbox.center )
 		# if draw_col == -1: draw_col = self.col
 		# pygame.draw.rect( gfx,( 255,0,255 ),self.hitbox )
 
-		pygame.draw.line( gfx,( 0,0,255 ),self.center.get(),
-			( self.center + self.vel * self.spd * 10.0 ).get() )
+		if draw_line:
+			pygame.draw.line( gfx,( 0,255,0 ),self.center.get(),
+				( self.center + self.vel * self.spd * 10.0 ).get() )
 
 	# Go directly towards target in a straight line.
 	def seek( self,target ):

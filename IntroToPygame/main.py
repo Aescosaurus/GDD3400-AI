@@ -22,10 +22,23 @@ for i in range( cm.sheep_count ):
 clock = pygame.time.Clock()
 while not done:
 	for event in pygame.event.get():
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_1: cm.sheep_vel_line = not cm.sheep_vel_line
+			if event.key == pygame.K_2: cm.dog_force_line = not cm.dog_force_line
+			if event.key == pygame.K_3: cm.bound_force_line = not cm.bound_force_line
+			if event.key == pygame.K_4: cm.show_frens = not cm.show_frens
+			if event.key == pygame.K_5: cm.bound_box = not cm.bound_box
+			if event.key == pygame.K_6: cm.enable_dog_force = not cm.enable_dog_force
+			if event.key == pygame.K_7: cm.enable_align_force = not cm.enable_align_force
+			if event.key == pygame.K_8: cm.enable_sep_force = not cm.enable_sep_force
+			if event.key == pygame.K_9: cm.enable_fren_force = not cm.enable_fren_force
+			if event.key == pygame.K_0: cm.enable_bound_force = not cm.enable_bound_force
 		if event.type == pygame.QUIT:
 			done = True
 	gfx.fill( cm.bg_color )
 	# Logic here
+	if pygame.key.get_pressed()[pygame.K_1]: pass
+
 	player.update()
 	player.draw( gfx )
 	
