@@ -90,7 +90,7 @@ graph = Graph()
 # dog = player(dogImage, vec2(Constants.WORLD_WIDTH * .5, Constants.WORLD_HEIGHT * .5), 
 # 			 vec2(Constants.DOG_WIDTH, Constants.DOG_HEIGHT), (0, 255, 0), 
 # 			 Constants.DOG_SPEED, Constants.DOG_ANGULAR_SPEED)
-dog = player( cm.screen_size / 2,cm.player_spd,cm.wolf_spr )
+dog = player( cm.screen_size / 2,cm.player_spd,cm.wolf_spr,graph )
 
 # Setup the sheep (only 1 for now...)
 herd = []
