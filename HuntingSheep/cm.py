@@ -11,6 +11,7 @@ bg_color = ( 100,149,237 )
 player_size = 10.0
 player_spd = 5.5
 player_col = ( 255,255,0 )
+player_rot_spd = 0.3
 
 enemy_size = 10.0
 enemy_spd = 2.0
@@ -30,6 +31,7 @@ sheep_count = 100
 sheep_fps = 12 # Higher = more sheep responsiveness, less game fps.
 sheep_fren_update_chance = 0.3 # Higher = update frens more but lag game more.
 sheep_bucket_size = int( sheep_fps / frame_rate * sheep_count )
+sheep_turn_spd = 0.3
 
 # Add the following controls to adjust various elements in your game to help you debug
 # (and to allow the grader to quickly and easily see that your components work):

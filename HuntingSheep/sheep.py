@@ -35,6 +35,7 @@ class sheep( agent ):
 			self.frens = self.find_neighbors( sheeps )
 
 		frens = self.frens
+		old_vel = self.vel
 
 		# Alignment
 		if cm.enable_align_force:
@@ -104,7 +105,7 @@ class sheep( agent ):
 				wall_vel *= -1
 				self.vel += wall_vel.normalize() * Constants.SHEEP_OBSTACLE_INFLUENCE_WEIGHT
 
-		self.vel = self.vel.normalize()
+		self.vel = vec2.lerp_to( old_vel,self.vel.normalize(),cm.sheep_turn_spd )
 		self.rot = math.degrees( math.atan2( self.vel.y,-self.vel.x ) ) + 90.0
 
 	def draw( self,gfx ):

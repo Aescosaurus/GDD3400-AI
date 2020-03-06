@@ -62,3 +62,7 @@ class vec2:
 	
 	def __ne__( self,rhs ):
 		return( not self == rhs )
+	
+	def lerp_to( start,target,spd ):
+		# return( start + ( target - start ) * spd )
+		return( start * ( 1.0 - spd ) + ( target * spd ) )
