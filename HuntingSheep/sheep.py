@@ -4,6 +4,7 @@ import cm
 from vec2 import vec2
 import random
 import pygame
+import Constants
 
 class sheep( agent ):
 	def __init__( self,pos,accel,img ):
@@ -15,6 +16,7 @@ class sheep( agent ):
 		self.frens = None
 		self.dog_pos = vec2.zero()
 		self.bound_pos = vec2.zero()
+		self.close_walls = []
 
 	def update( self,bounds,graph,dog,herd,gates ):
 		# return
@@ -28,7 +30,7 @@ class sheep( agent ):
 		# else:
 		# 	self.spd = 0.0
 
-	def update_ai( self,player,sheeps ):
+	def update_ai( self,player,sheeps,obstacles ):
 		if random.uniform( 0.0,1.0 ) < cm.sheep_fren_update_chance or self.frens == None:
 			self.frens = self.find_neighbors( sheeps )
 
@@ -86,6 +88,22 @@ class sheep( agent ):
 				self.vel += dog_vel.normalize() * cm.dog_force
 				self.dog_pos = player.center
 
+		# Obstacles
+		if cm.enable_obstacle_force:
+			self.close_walls.clear()
+			wall_vel = vec2.zero()
+			n_close_walls = 0
+			for wall in obstacles:
+				diff = wall.center - self.center
+				if diff.get_len_sq() < Constants.SHEEP_OBSTACLE_RADIUS ** 2:
+					n_close_walls += 1
+					wall_vel += diff
+					self.close_walls.append( wall )
+			if n_close_walls > 0:
+				wall_vel /= n_close_walls
+				wall_vel *= -1
+				self.vel += wall_vel.normalize() * Constants.SHEEP_OBSTACLE_INFLUENCE_WEIGHT
+
 		self.vel = self.vel.normalize()
 		self.rot = math.degrees( math.atan2( self.vel.y,-self.vel.x ) ) + 90.0
 
@@ -105,7 +123,10 @@ class sheep( agent ):
 				pygame.draw.line( gfx,( 0,0,255 ),self.center.get(),
 					 fren.center.get() )
 
-
+		if cm.show_walls:
+			for wall in self.close_walls:
+				pygame.draw.line( gfx,( 255,125,0 ),self.center.get(),
+					 wall.center.get() )
 
 	def find_neighbors( self,sheep_vec ):
 		neighbors = []

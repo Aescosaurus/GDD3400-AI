@@ -33,16 +33,18 @@ sheep_bucket_size = int( sheep_fps / frame_rate * sheep_count )
 
 # Add the following controls to adjust various elements in your game to help you debug
 # (and to allow the grader to quickly and easily see that your components work):
-sheep_vel_line     = True # Toggle Sheep Velocity line.
-dog_force_line     = True # Toggle Dog Force line.
-bound_force_line   = True # Toggle Boundary Force lines.
-show_frens         = True # Toggle Neighbor lines.
-bound_box          = True # Toggle Bounding Boxes.
-enable_dog_force   = True # Toggle Dog Forces.
-enable_align_force = True # Toggle Alignment Forces.
-enable_sep_force   = True # Toggle Separation Forces
-enable_fren_force  = True # Toggle Cohesion Forces.
-enable_bound_force = True # Toggle Boundary Forces.
+sheep_vel_line        = True # Toggle Sheep Velocity line.
+dog_force_line        = True # Toggle Dog Force line.
+bound_force_line      = True # Toggle Boundary Force lines.
+show_frens            = True # Toggle Neighbor lines.
+show_walls            = True
+bound_box             = True # Toggle Bounding Boxes.
+enable_dog_force      = True # Toggle Dog Forces.
+enable_align_force    = True # Toggle Alignment Forces.
+enable_sep_force      = True # Toggle Separation Forces
+enable_fren_force     = True # Toggle Cohesion Forces.
+enable_bound_force    = True # Toggle Boundary Forces.
+enable_obstacle_force = True
 
 wolf_spr = "dog.png"
 sheep_spr = "sheep.png"

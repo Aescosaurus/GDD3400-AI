@@ -121,7 +121,7 @@ while not hasQuit:
 	dog.update( bounds, graph, herd, Constants.GATES )
 	for shp in herd:
 		shp.update( bounds, graph, dog, herd, Constants.GATES )
-		shp.update_ai( dog,herd )
+		shp.update_ai( dog,herd,graph.obstacles )
 
 	# Draw the agents onscreen
 	graph.draw( screen )
