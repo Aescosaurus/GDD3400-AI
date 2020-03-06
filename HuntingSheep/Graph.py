@@ -129,11 +129,10 @@ class Graph():
 
 				if node == self.getNodeFromPoint( end ):
 					path = self.buildPath( node )
-					# backpath = node
-					# while backpath != None and backpath != 0:
-					# 	path.append( backpath )
-					# 	backpath = backpath.backNode
-
+					return( path )
+			
+			for node in to_visit:
+				node.isExplored = True
 			to_visit.clear()
 			for i in temp:
 				to_visit.append( i )
@@ -152,6 +151,7 @@ class Graph():
 		target = self.getNodeFromPoint( end )
 		while len( pqueue ) > 0:
 			item = pqueue.pop( 0 )
+			item.isExplored = True
 			if item == target:
 				path = self.buildPath( item )
 				return( path )
@@ -185,9 +185,32 @@ class Graph():
 		print("BEST_FIRST")
 		self.reset()
 
-		# TODO: Add your Best-first code here!
+		path = []
+		pqueue = []
+		pqueue.append( self.getNodeFromPoint( start ) )
+		pqueue[0].isVisited = True
+		target = self.getNodeFromPoint( end )
+		while len( pqueue ) > 0:
+			item = pqueue.pop( 0 )
+			item.isExplored = True
+			if item == target:
+				path = self.buildPath( item )
+				return( path )
+			else:
+				for neigh in item.neighbors:
+					new_dist = ( neigh.center - target.center ).get_len()
+					if not neigh.isVisited and neigh.isWalkable:
+						neigh.isVisited = True
+						neigh.cost = new_dist
+						neigh.backNode = item
+						pqueue.append( neigh )
+						pqueue.sort( reverse = False )
+					else:
+						if new_dist < neigh.cost:
+							neigh.cost = new_dist
+							neigh.backNode = item
 
-		return []
+		return( path )
 
 	def draw(self, screen):
 		""" Draw the graph """
