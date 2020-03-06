@@ -8,29 +8,22 @@ class player( agent ):
 		self.spd = self.accel
 		self.path = []
 		self.algo = 0
-		self.pf_algos = [ graph.findPath_AStar,
-			graph.findPath_BestFirst,
-			graph.findPath_Djikstra,
-			graph.findPath_Breadth]
+		self.pf_algos = [ ( graph.findPath_AStar,pygame.K_a,"A*" ),
+			( graph.findPath_BestFirst,pygame.K_s,"Best First" ),
+			( graph.findPath_Djikstra,pygame.K_d,"Djiakhfbijstras" ),
+			( graph.findPath_Breadth,pygame.K_f,"Breadth First" )]
 
 	def update( self,bounds,graph,herd,gates ):
 		super().update()
 
-		if pygame.key.get_pressed()[pygame.K_a] and self.algo != 0:
-			self.algo = 0
-			print( "Now pathing using A*" )
-		if pygame.key.get_pressed()[pygame.K_s] and self.algo != 1:
-			self.algo = 1
-			print( "Now pathing using Best First" )
-		if pygame.key.get_pressed()[pygame.K_d] and self.algo != 2:
-			self.algo = 2
-			print( "Now pathing using Djiakhfbijstras" )
-		if pygame.key.get_pressed()[pygame.K_f] and self.algo != 3:
-			self.algo = 3
-			print( "Now pathing using Breadth First" )
+		for i in range( len( self.pf_algos ) ):
+			item = self.pf_algos[i]
+			if pygame.key.get_pressed()[item[1]] and self.algo != i:
+				self.algo = i
+				print( "Now switching to pathfinding using " + item[2] )
 
 		if len( self.path ) == 0:
-			self.path = self.pf_algos[self.algo]( self.pos,herd[0].pos )
+			self.path = self.pf_algos[self.algo][0]( self.pos,herd[0].pos )
 			# self.path = graph.findPath_Breadth( self.pos,herd[0].pos )
 			# self.path = graph.findPath_Djikstra( self.pos,herd[0].pos )
 			# self.path = graph.findPath_BestFirst( self.pos,herd[0].pos )
