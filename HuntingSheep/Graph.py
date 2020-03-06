@@ -112,9 +112,33 @@ class Graph():
 		print("BREADTH-FIRST")
 		self.reset()
 
-		# TODO: Add your breadth-first code here!
+		to_visit = []
+		to_visit.append( self.getNodeFromPoint( start ) )
+		path = []
+		while len( path ) == 0:
+			temp = []
+			for node in to_visit:
+				node.isVisited = True
+				for neigh in node.neighbors:
+					if not neigh.isVisited and \
+						neigh not in to_visit and \
+						neigh not in temp and \
+						neigh.isWalkable:
+						temp.append( neigh )
+						temp[-1].backNode = node
 
-		return []
+				if node == self.getNodeFromPoint( end ):
+					path = self.buildPath( node )
+					# backpath = node
+					# while backpath != None and backpath != 0:
+					# 	path.append( backpath )
+					# 	backpath = backpath.backNode
+
+			to_visit.clear()
+			for i in temp:
+				to_visit.append( i )
+
+		return( path )
 
 	def findPath_Djikstra(self, start, end):
 		""" Djikstra's Search """
