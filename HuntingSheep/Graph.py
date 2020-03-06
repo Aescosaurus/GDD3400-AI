@@ -189,7 +189,7 @@ class Graph():
 				return( path )
 			else:
 				for neigh in item.neighbors:
-					new_dist = ( neigh.center - target.center ).get_len() + \
+					new_dist = item.cost + ( neigh.center - target.center ).get_len() + \
 						( neigh.center - item.center ).get_len()
 					if not neigh.isVisited and neigh.isWalkable:
 						neigh.isVisited = True
