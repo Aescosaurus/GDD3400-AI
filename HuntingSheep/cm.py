@@ -13,7 +13,7 @@ player_spd = 5.5
 player_col = ( 255,255,0 )
 
 enemy_size = 10.0
-enemy_spd = 5.0
+enemy_spd = 2.0
 enemy_col = ( 0,255,0 )
 enemy_attack_range = 200.0
 
@@ -44,5 +44,5 @@ enable_sep_force   = True # Toggle Separation Forces
 enable_fren_force  = True # Toggle Cohesion Forces.
 enable_bound_force = True # Toggle Boundary Forces.
 
-wolf_spr = "images/collie.png"
-sheep_spr = "images/sheep.png"
+wolf_spr = "dog.png"
+sheep_spr = "sheep.png"

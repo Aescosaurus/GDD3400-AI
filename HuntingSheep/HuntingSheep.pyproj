@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>401f9832-34fe-4241-87ac-be72eea5efc8</ProjectGuid>
+    <ProjectGuid>1e92bcb9-0272-4db6-ad58-369434643867</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>IntroToPygame</Name>
-    <RootNamespace>IntroToPygame</RootNamespace>
+    <Name>HuntingSheep</Name>
+    <RootNamespace>HuntingSheep</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,37 +21,17 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="cm.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="codex.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="dog.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="enemy.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="agent.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="enemy_hunter.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="player.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="agent.py" />
+    <Compile Include="cm.py" />
+    <Compile Include="codex.py" />
+    <Compile Include="Constants.py" />
+    <Compile Include="DrawableObject.py" />
+    <Compile Include="Graph.py" />
     <Compile Include="main.py" />
-    <Compile Include="sheep.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="timer.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="vec2.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Node.py" />
+    <Compile Include="player.py" />
+    <Compile Include="sheep.py" />
+    <Compile Include="vec2.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
