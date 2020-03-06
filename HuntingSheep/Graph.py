@@ -176,9 +176,33 @@ class Graph():
 		print("A_STAR")
 		self.reset()
 
-		# TODO: Add your A-star code here!
+		path = []
+		pqueue = []
+		pqueue.append( self.getNodeFromPoint( start ) )
+		pqueue[0].isVisited = True
+		target = self.getNodeFromPoint( end )
+		while len( pqueue ) > 0:
+			item = pqueue.pop( 0 )
+			item.isExplored = True
+			if item == target:
+				path = self.buildPath( item )
+				return( path )
+			else:
+				for neigh in item.neighbors:
+					new_dist = ( neigh.center - target.center ).get_len() + \
+						( neigh.center - item.center ).get_len()
+					if not neigh.isVisited and neigh.isWalkable:
+						neigh.isVisited = True
+						neigh.cost = new_dist
+						neigh.backNode = item
+						pqueue.append( neigh )
+						pqueue.sort( reverse = False )
+					else:
+						if new_dist < neigh.cost:
+							neigh.cost = new_dist
+							neigh.backNode = item
 
-		return []
+		return( path )
 
 	def findPath_BestFirst(self, start, end):
 		""" Best First Search """
