@@ -143,11 +143,33 @@ class Graph():
 	def findPath_Djikstra(self, start, end):
 		""" Djikstra's Search """
 		print("DJIKSTRA")
-		self.reset()		
+		self.reset()
 
-		# TODO: Add your Djikstra code here!
+		path = []
+		pqueue = []
+		pqueue.append( self.getNodeFromPoint( start ) )
+		pqueue[0].isVisited = True
+		target = self.getNodeFromPoint( end )
+		while len( pqueue ) > 0:
+			item = pqueue.pop( 0 )
+			if item == target:
+				path = self.buildPath( item )
+				return( path )
+			else:
+				for neigh in item.neighbors:
+					new_dist = item.cost + ( neigh.center - item.center ).get_len()
+					if not neigh.isVisited and neigh.isWalkable:
+						neigh.isVisited = True
+						neigh.cost = new_dist
+						neigh.backNode = item
+						pqueue.append( neigh )
+						pqueue.sort( reverse = False )
+					else:
+						if new_dist < neigh.cost:
+							neigh.cost = new_dist
+							neigh.backNode = item
 
-		return []
+		return( path )
 
 	def findPath_AStar(self, start, end):
 		""" A Star Search """

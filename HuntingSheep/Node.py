@@ -48,7 +48,8 @@ class Node(DrawableObject):
 		self.isPath = False			# Is in the final path
 		self.costFromStart = sys.maxsize
 		self.costToEnd = sys.maxsize
-		self.cost = sys.maxsize		# total cost
+		# self.cost = sys.maxsize		# total cost
+		self.cost = 0.0
 		self.backNode = 0			# Node from which we explored this node
 
 	def draw(self, screen):

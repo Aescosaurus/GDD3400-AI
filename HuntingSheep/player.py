@@ -12,7 +12,8 @@ class player( agent ):
 		super().update()
 		
 		if len( self.path ) == 0:
-			self.path = graph.findPath_Breadth( self.pos,herd[0].pos )
+			# self.path = graph.findPath_Breadth( self.pos,herd[0].pos )
+			self.path = graph.findPath_Djikstra( self.pos,herd[0].pos )
 		else:
 			super().seek( self.path[0].center )
 			if graph.getNodeFromPoint( self.pos ) == self.path[0]:

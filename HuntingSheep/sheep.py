@@ -17,6 +17,7 @@ class sheep( agent ):
 		self.bound_pos = vec2.zero()
 
 	def update( self,bounds,graph,dog,herd,gates ):
+		# return
 		super().update()
 
 		# if ( player.pos - self.pos ).get_len_sq() < math.pow( cm.enemy_attack_range,2 ):
